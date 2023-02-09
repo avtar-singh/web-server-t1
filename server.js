@@ -66,3 +66,5 @@ app.get("/", (req, res) => res.redirect("/home"));
 app.listen(port, () => {
     console.log(`Server is up on port: ${port}`);
 });
+
+module.exports = app;
