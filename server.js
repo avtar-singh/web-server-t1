@@ -2,6 +2,8 @@ const express = require('express');
 const hbs = require('hbs');
 const fs = require('fs');
 
+const port = process.env.PORT || 3000;
+
 // Register Partial
 hbs.registerPartials(__dirname + '/views/partials');
 
@@ -29,9 +31,9 @@ app.use((req, res, next) => {
 });
 
 // Middleware - Maintenance Page
-app.use((req, res, next) => {
-    res.render("maintenance.hbs");
-});
+// app.use((req, res, next) => {
+//     res.render("maintenance.hbs");
+// });
 
 // Middleware - Static User Accessable Directory
 app.use(express.static(__dirname + '/public'));
@@ -61,4 +63,6 @@ app.get('/bad', (req, res) => {
 
 app.get("/", (req, res) => res.redirect("/home"));
 
-app.listen(3000);
+app.listen(port, () => {
+    console.log(`Server is up on port: ${port}`);
+});
