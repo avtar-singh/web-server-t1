@@ -43,6 +43,12 @@ hbs.registerHelper('getCurrentYear', () => {
     return new Date().getFullYear();
 });
 
+app.listen(port, () => {
+  console.log(`Server is up on port: ${port}`);
+});
+
+app.get('/', (req, res) => res.redirect('/home'));
+
 app.get('/home', (req, res) => {
  res.render("home.hbs", {
    title: "Home Page"
@@ -59,12 +65,6 @@ app.get('/bad', (req, res) => {
     res.send({
         errorMessage: 'Unable to process URL'
     });
-});
-
-app.get("/", (req, res) => res.redirect("/home"));
-
-app.listen(port, () => {
-    console.log(`Server is up on port: ${port}`);
 });
 
 module.exports = app;
